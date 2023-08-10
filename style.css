@@ -1,0 +1,164 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+:root {
+  --primaryColor: #6d28d9;
+  --secondaryColor: #ede9fe;
+  --mainWhite: #fff;
+  --mainBlack: #222;
+  --mainGray: #7c7c7c;
+  --secondaryGray: #ccc;
+  --mainSpacing: 0.1rem;
+  --mainTransition: all 0.3s linear;
+  --mainRed: #db2777;
+  --bodyColor: #f6f6f6;
+}
+
+body {
+  color: var(--mainBlack);
+  background-color: var(--bodyColor);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+header {
+  min-height: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.form-container {
+  display: flex;
+}
+
+.todo-container {
+  margin-top: 1rem;
+  width: 25rem;
+}
+
+.form-container form {
+  width: 25rem;
+  background-color: var(--mainWhite);
+  border-radius: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  border: 2px solid var(--secondaryGray);
+  overflow: hidden;
+}
+
+.todo-input {
+  flex: 1;
+  font-weight: bold;
+}
+
+.todo-btn,
+.todo-input {
+  border: none;
+  outline: none;
+  background-color: none;
+  font-size: 1rem;
+  padding: 0.5rem;
+}
+
+.todo-btn {
+  color: var(--primaryColor);
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  padding: 0.5rem 1rem;
+}
+
+.todo-btn:hover {
+  background-color: var(--primaryColor);
+  color: var(--mainWhite);
+}
+
+.todo {
+  background-color: var(--mainWhite);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 1rem;
+  padding: 0.5rem 1rem;
+  margin-bottom: 1rem;
+  transition: all 0.3s ease;
+}
+
+.title__todo {
+  flex: 1;
+  color: var(--primaryColor);
+  font-weight: bold;
+}
+
+.todo button {
+  display: block;
+  font-size: 1rem;
+  padding: 0.5rem;
+  cursor: pointer;
+  background-color: transparent;
+  outline: none;
+  border: none;
+}
+
+.completed {
+  text-decoration: line-through;
+  opacity: 0.5;
+}
+
+select {
+  appearance: none;
+  border: none;
+  outline: none;
+  width: 100%;
+  padding: 1rem;
+  color: var(--primaryColor);
+  background-color: var(--mainWhite);
+}
+
+.select {
+  margin-left: 1rem;
+  background-color: var(--mainWhite);
+  cursor: pointer;
+  width: 10rem;
+  position: relative;
+  border: 2px solid var(--primaryColor);
+  font-weight: bold;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.select::after {
+  content: "\25BC";
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 1rem;
+  pointer-events: none;
+  color: var(--primaryColor);
+}
+
+.todo__createdAt {
+  font-size: 1rem;
+  padding-right: 8px;
+}
+
+.todo-trash {
+  color: var(--mainRed);
+  font-size: 0.8rem;
+}
+
+.todo-check {
+  color: var(--primaryColor);
+  font-size: 0.8rem;
+}
