@@ -15,8 +15,12 @@ function createTodos(todos) {
     <span class="todo__createdAt">${new Date(
       todo.createdAt
     ).toLocaleDateString()}</span>
-    <button data-todo-id=${todo.id} class="todo-check">check</button>
-    <button data-todo-id=${todo.id} class="todo-trash">Delete</button>
+    <button data-todo-id=${
+      todo.id
+    } class="todo-check"><i class="fa-regular fa-square-check "></i></button>
+    <button data-todo-id=${
+      todo.id
+    } class="todo-trash "><i class="fa-regular fa-trash-can"></i></button>
   </li> 
     `;
   });

@@ -162,3 +162,12 @@ select {
   color: var(--primaryColor);
   font-size: 0.8rem;
 }
+
+button > i {
+  pointer-events: none;
+}
+
+button {
+  outline: none;
+  border: none;
+}
