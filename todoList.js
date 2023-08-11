@@ -1,24 +1,15 @@
 const todoForm = document.querySelector(".todo-form");
 const todoInput = document.querySelector(".todo-input");
 const todoList = document.querySelector(".todo-list");
+const selectedFilter = document.querySelector(".filter-todos");
 const todos = [];
+
 todoForm.addEventListener("submit", addTodoList);
+selectedFilter.addEventListener("change", filterTodos);
 
-function createElement(e) {
-  const newTodo = {
-    id: Date.now(),
-    title: todoInput.value,
-    createdAt: new Date().toISOString(),
-    isComplete: false,
-  };
-
-  todos.push(newTodo);
-
-  if (!todoInput.value) return null;
-
+function createTodos(todos) {
   let result = "";
   todos.forEach((todo) => {
-    console.log(todo);
     result += `<li class="todo">
     <p class="title__todo">${todo.title}</p>
     <span class="todo__createdAt">${new Date(
@@ -35,5 +26,39 @@ function createElement(e) {
 
 function addTodoList(e) {
   e.preventDefault();
-  createElement(todos);
+
+  if (!todoInput.value) return null;
+
+  const newTodo = {
+    id: Date.now(),
+    title: todoInput.value,
+    createdAt: new Date().toISOString(),
+    isCompleted: false,
+  };
+
+  todos.push(newTodo);
+
+  createTodos(todos);
+}
+
+function filterTodos(e) {
+  const filter = e.target.value;
+  switch (filter) {
+    case "all": {
+      createTodos(todos);
+      break;
+    }
+    case "completed": {
+      const filteredTodos = todos.filter((t) => t.isCompleted);
+      createTodos(filteredTodos);
+      break;
+    }
+    case "uncompleted": {
+      const filteredTodos = todos.filter((t) => !t.isCompleted);
+      createTodos(filteredTodos);
+      break;
+    }
+    default:
+      createTodos(todos);
+  }
 }
