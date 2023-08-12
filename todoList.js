@@ -11,7 +11,7 @@ function createTodos(todos) {
   let result = "";
   todos.forEach((todo) => {
     result += `<li class="todo">
-    <p class="title__todo">${todo.title}</p>
+    <p class="title__todo ${todo.isCompleted && "completed"}">${todo.title}</p>
     <span class="todo__createdAt">${new Date(
       todo.createdAt
     ).toLocaleDateString()}</span>
@@ -29,6 +29,9 @@ function createTodos(todos) {
 
   const removeBtn = [...document.querySelectorAll(".todo-trash")];
   removeBtn.forEach((t) => t.addEventListener("click", removeTodo));
+
+  const checkedBtn = [...document.querySelectorAll(".todo-check")];
+  checkedBtn.forEach((t) => t.addEventListener("click", checkedTodo));
 }
 
 function addTodoList(e) {
@@ -71,8 +74,14 @@ function filterTodos(e) {
 }
 
 function removeTodo(e) {
-  console.log(e.target.dataset.todoId);
   const todoId = Number(e.target.dataset.todoId);
   todos = todos.filter((t) => t.id !== todoId);
+  createTodos(todos);
+}
+
+function checkedTodo(e) {
+  const todoId = Number(e.target.dataset.todoId);
+  const todo = todos.find((t) => t.id === todoId);
+  todo.isCompleted = !todo.isCompleted;
   createTodos(todos);
 }
